@@ -10,7 +10,7 @@ var userSchema = new Schema({
         type: String,
         required: [true, 'Email Tidak Boleh Kosong']
     },
-    password; {
+    password: {
         type: String,
         required: [true, 'Password Tidak Boleh Kosong']
     }
