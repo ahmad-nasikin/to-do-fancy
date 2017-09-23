@@ -14,6 +14,8 @@ var userSchema = new Schema({
         type: String,
         required: [true, 'Password Tidak Boleh Kosong']
     }
+}, {
+    timestamps: true
 })
 
 var User = mongoose.model('User', userSchema)
