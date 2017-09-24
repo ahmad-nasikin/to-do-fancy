@@ -40,5 +40,18 @@ module.exports = {
                 err: err.message
             })
         })
+    },
+    update: (req, res) => {
+        models.update({
+            _id: req.params.id
+        }, {
+            status: req.body.status
+        })
+        .then(result => {
+            res.send('Sukses Update')
+        })
+        .catch(err => {
+            res.send({err: err.message})
+        })
     }
 }
