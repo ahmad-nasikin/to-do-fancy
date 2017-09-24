@@ -44,5 +44,16 @@ module.exports = {
                 })
             })
         });
+    },
+    delete: (req, res) => {
+        models.remove({
+            _id: req.params.id
+        })
+        .then(result => {
+            res.send('Berhasil Delete User')
+        })
+        .catch(err => {
+            res.send(err)
+        })
     }
 }

@@ -13,17 +13,22 @@ module.exports = {
       if (result != null) {
         let password = req.body.password
         if (bcrypt.compareSync(password, result.password)) {
-          var token = jwt.sign({id: result.id, username: result.username, email: result.email}, process.env.SECRET)
-          res.send(token)
+          let token = jwt.sign({
+            id: result.id,
+            username: result.username,
+            email: result.email
+          }, process.env.SECRET)
+          console.log('ini token', token)
+          res.send({
+            msg: 'Succes login',
+            token: token
+          })
         } else {
-          res.send('invalid password')
+          res.send('Password Salah')
         }
       } else {
-        res.send('username tidak ada')
+        res.send('Username Tidak Ada')
       }
-    })
-    .catch(err => {
-      res.send(err)
     })
   }
 }

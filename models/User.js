@@ -13,7 +13,11 @@ var userSchema = new Schema({
     password: {
         type: String,
         required: [true, 'Password Tidak Boleh Kosong']
-    }
+    },
+    todo: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Todo'
+    }]
 }, {
     timestamps: true
 })
