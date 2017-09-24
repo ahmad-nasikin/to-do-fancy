@@ -18,5 +18,27 @@ module.exports = {
         .catch(err => {
             res.send(err)
         })
+    },
+    getTodo: (req, res) => {
+        models.find({})
+        .then(result => {
+            res.send(result)
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    },
+    getOne: (req, res) => {
+        models.find({
+            _id: req.params.id
+        })
+        .then(result => {
+            res.send(result)
+        })
+        .catch(err => {
+            res.send({
+                err: err.message
+            })
+        })
     }
 }
