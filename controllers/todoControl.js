@@ -20,12 +20,15 @@ module.exports = {
         })
     },
     getTodo: (req, res) => {
-        models.find({})
+        let user = jwt.verify(req.headers.token, process.env.SECRET, (err, user) => {
+            console.log('ini user id', user.id)
+        models.find({creator: user.id})
         .then(result => {
             res.send(result)
         })
         .catch(err => {
             res.send(err)
+        })
         })
     },
     getOne: (req, res) => {
@@ -52,6 +55,11 @@ module.exports = {
         })
         .catch(err => {
             res.send({err: err.message})
+        })
+    }, 
+    delete: (req, res) => {
+        models.remove({
+
         })
     }
 }

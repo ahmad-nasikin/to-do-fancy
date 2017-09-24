@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs')
 module.exports = {
     getDataUser: (req, res) => {
         models.find({})
+        .populate('todo')
         .then(result => {
             res.send(result)
         })
