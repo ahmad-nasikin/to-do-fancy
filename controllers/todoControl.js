@@ -1,22 +1,22 @@
 const models = require('../models/Todo')
-// const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 
 module.exports = {
     create: (req, res) => {
-        // var headers = JSON.parse(req.headers.token)
-        // console.log('ini headers', headers)
-        // console.log('ini headers id', headers._id)
+        let user = jwt.verify(req.headers.token, process.env.SECRET, (err, user) => {
+            console.log('ini user id', user.id)
         models.create({
             title: req.body.title,
             content: req.body.content,
             status: req.body.status,
-            creator: req.headers._id
+            creator: user.id
         })
         .then(result => {
             res.send({msg: 'sukses create todo', result})
         })
         .catch(err => {
             res.send(err)
+        })
         })
     },
     getTodo: (req, res) => {

@@ -10,5 +10,12 @@ module.exports = {
                 next()
             }
         })
+    },
+    authByid: (req, res, next) => {
+        if (req.id === req.params.id) {
+            next()
+        } else {
+            res.send('Anda Tidak Punya Hak Akses')
+        }
     }
 }
