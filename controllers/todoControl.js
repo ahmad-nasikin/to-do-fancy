@@ -1,9 +1,11 @@
-const models = require('../models/User')
+const models = require('../models/Todo')
+// const jwt = require('jsonwebtoken')
 
 module.exports = {
     create: (req, res) => {
-        console.log('ini headers', headers._id)
-        console.log('isi body', req.body)
+        // var headers = JSON.parse(req.headers.token)
+        // console.log('ini headers', headers)
+        // console.log('ini headers id', headers._id)
         models.create({
             title: req.body.title,
             content: req.body.content,
@@ -11,7 +13,7 @@ module.exports = {
             creator: req.headers._id
         })
         .then(result => {
-            res.send(result)
+            res.send({msg: 'sukses create todo', result})
         })
         .catch(err => {
             res.send(err)
