@@ -31,19 +31,19 @@ module.exports = {
         })
         })
     },
-    getOne: (req, res) => {
-        models.find({
-            _id: req.params.id
-        })
-        .then(result => {
-            res.send(result)
-        })
-        .catch(err => {
-            res.send({
-                err: err.message
-            })
-        })
-    },
+    // getOne: (req, res) => {
+    //     models.find({
+    //         _id: req.params.id
+    //     })
+    //     .then(result => {
+    //         res.send(result)
+    //     })
+    //     .catch(err => {
+    //         res.send({
+    //             err: err.message
+    //         })
+    //     })
+    // },
     update: (req, res) => {
         models.update({
             _id: req.params.id
