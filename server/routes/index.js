@@ -6,6 +6,7 @@ const signInController = require('../controllers/loginControl')
 
 router.post('/signup', signUpController.signup)
 router.get('/users', userController.getDataUser)
+router.get('/:id', userController.getOneUser)
 router.delete('/:id', userController.delete)
 router.post('/signin', signInController.login)
 
